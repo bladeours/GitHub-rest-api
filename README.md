@@ -12,7 +12,7 @@ Simple REST API that returns user and repositories data.
 
 
 ## General Info
-This is Allegro recruitment assignment. I am very excited to participate in this 
+This is Allegro recruitment assignment. I am very excited to participate in it 
 because I would love work in the biggest ecommerce company in Poland.
 This API allows you to get information about user such as login, name, bio, all languages
 and number of bytes for each. It also allows you to get list of all repositories for

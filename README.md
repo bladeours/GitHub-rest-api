@@ -1,14 +1,15 @@
 My email in recruitment process: `2krafal.wisniewski@gmail.com`
 
-# REST API 
+# Allegro Summer Experience 2022
 Simple REST API that returns user and repositories data.
 
 ## Table of Contents
 * [General info](#general-info)
+* [Authorization](#authorization)
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
 * [First Steps](#first-steps)
-* [Authorization](authorization)
+
 
 ## General Info
 This is Allegro recruitment assignment. I am very excited to participate in this 
@@ -26,7 +27,7 @@ it has to connect with GitHub API for languages.
 * JUnit
 
 ## Authorization
-Github limits connections to API for one user to 60 per hour. It can be
+GitHub limits connections to API for one user to 60 per hour. It can be
 increased by using personal token, so in my project you can use it. [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) 
 is instruction how to generate token. If you are running project from source code in IDE
 you can paste your token in application.properties file or if you are running file from
@@ -39,7 +40,8 @@ jar then paste it in /config/application.properties.
 Clone repository, paste personal token to resources/application.properties and run project.
 2. **Package**
 \
-[Download]() package with jar and config file then run it from command line
+[Download](https://github.com/bladeours/allegro-summer-experience-2022/releases) 
+package with jar and config file then run it from command line
 \
 `java -jar restApi.jar`
 \

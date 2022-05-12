@@ -1,6 +1,4 @@
-My email in recruitment process: `2krafal.wisniewski@gmail.com`
-
-# Allegro Summer Experience 2022
+# Github Rest Api
 Simple REST API that returns user and repositories data.
 
 ## Table of Contents
@@ -12,13 +10,7 @@ Simple REST API that returns user and repositories data.
 
 
 ## General Info
-This is Allegro recruitment assignment. I am very excited to participate in it 
-because I would love work in the biggest ecommerce company in Poland.
-This API allows you to get information about user such as login, name, bio, all languages
-and number of bytes for each. It also allows you to get list of all repositories for
-user and languages (also with number of bytes) for each repo. Unfortunately this is a
-little slow API, but that is because it uses external GitHub API and for each repository
-it has to connect with GitHub API for languages.
+This is my project where I learn about Rest Api and Spring Boot in Java.
 
 ## Technologies Used
 * Spring

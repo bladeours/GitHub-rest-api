@@ -23,7 +23,6 @@ import java.util.Map;
 @Service
 public class RepositoriesService {
 
-    @Value("${github.token}")
     private String token;
     private final RestTemplate restTemplate;
     public RepositoriesService(RestTemplateBuilder restTemplateBuilder) {
@@ -31,7 +30,8 @@ public class RepositoriesService {
 
     }
     
-    public ArrayList<GitHubRepository> getRepositories(String username) throws IOException {
+    public ArrayList<GitHubRepository> getRepositories(String username, String authToken) throws IOException {
+        token = authToken;
         ArrayList<GitHubRepository> allRepositories = new ArrayList<>();
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", String.format("Bearer %s",token));

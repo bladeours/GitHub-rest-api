@@ -4,6 +4,7 @@ import com.restapi.gitHub.GitHubRepository;
 import com.restapi.service.RepositoriesService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ public class RepositoriesController {
     }
 
     @GetMapping("/user-repositories/{username}")
-    public ArrayList<GitHubRepository> githubRepositories(@PathVariable String username) throws IOException {
-        return repositoriesService.getRepositories(username);
+    public ArrayList<GitHubRepository> githubRepositories(@PathVariable String username,
+                                                          @RequestHeader("Auth") String authToken) throws IOException {
+        return repositoriesService.getRepositories(username, authToken);
     }
 }

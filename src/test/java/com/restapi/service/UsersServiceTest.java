@@ -27,8 +27,6 @@ class UsersServiceTest {
     @Mock
     private RestTemplate restTemplate;
 
-    @Value("${github.token}")
-    private String token;
 
     RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
 
@@ -54,7 +52,7 @@ class UsersServiceTest {
         allRepositories.add(gitHubRepository1);
         allRepositories.add(gitHubRepository2);
 
-        Mockito.when(repositoriesService.getRepositories("testUser"))
+        Mockito.when(repositoriesService.getRepositories("testUser",""))
                 .thenReturn(allRepositories);
         Mockito.when(repositoriesService.getLanguagesForRepository("testUser","firstTestRepo"))
                 .thenReturn(languages1);
@@ -78,7 +76,7 @@ class UsersServiceTest {
 
         org.springframework.http.HttpHeaders headers = new HttpHeaders();
         String urlToAPI = "https://api.github.com/users/testUser";
-        headers.set("Authorization", String.format("Bearer %s",token));
+        headers.set("Authorization", String.format("Bearer %s","token"));
 
         ResponseEntity<GitHubProfileRaw> myEntity = new ResponseEntity<>(gitHubProfileRaw,headers, HttpStatus.OK);
 

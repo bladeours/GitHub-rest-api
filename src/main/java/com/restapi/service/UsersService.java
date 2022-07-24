@@ -24,15 +24,16 @@ public class UsersService {
 
     private RestTemplate restTemplate;
     private RepositoriesService repositoriesService;
-    @Value("${github.token}")
     private String token;
+
 
     public UsersService(RestTemplateBuilder restTemplateBuilder, RepositoriesService repositoriesService) {
         restTemplate = restTemplateBuilder.errorHandler(new RestTemplateResponseErrorHandler()).build();
         this.repositoriesService = repositoriesService;
     }
 
-    public GitHubProfile getUser (String username) throws IOException {
+    public GitHubProfile getUser (String username, String authToken) throws IOException {
+        token = authToken;
         GitHubProfileRaw gitHubProfileRaw = getUserInfo(username);
         Map<String,Long> allLanguages = mergeAllLanguages(username);
         GitHubProfile githubProfile = new GitHubProfile(gitHubProfileRaw.getBio(),gitHubProfileRaw.getLogin(),
@@ -55,7 +56,7 @@ public class UsersService {
     }
 
     public Map<String, Long> mergeAllLanguages(String username) throws IOException {
-        ArrayList<GitHubRepository> allRepositories = repositoriesService.getRepositories(username);
+        ArrayList<GitHubRepository> allRepositories = repositoriesService.getRepositories(username, token);
         Map<String,Long> allLanguages = new HashMap<>();
         for(GitHubRepository repository: allRepositories) {
             Map<String, Long> language = repositoriesService.getLanguagesForRepository(username, repository.getName());

@@ -42,7 +42,7 @@ public class ApiExceptionHandler {
 
     //405 - Method not allowed
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity<Object> ahandle(HttpRequestMethodNotSupportedException e){
+    public ResponseEntity<Object> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e){
         HttpStatus methodNotAllowed = HttpStatus.METHOD_NOT_ALLOWED;
         ApiException apiException = new ApiException(e.getMessage(), methodNotAllowed, ZonedDateTime.now(ZoneId.of("Z")),
                 HttpStatus.METHOD_NOT_ALLOWED.value());
@@ -51,7 +51,7 @@ public class ApiExceptionHandler {
 
     //401 - Unauthorized
     @ExceptionHandler(ApiUnauthorizedException.class)
-    public ResponseEntity<Object> ahandle(ApiUnauthorizedException e){
+    public ResponseEntity<Object> handleApiUnauthorizedException(ApiUnauthorizedException e){
         HttpStatus Unauthorized = HttpStatus.UNAUTHORIZED;
         ApiException apiException = new ApiException(e.getMessage(), Unauthorized, ZonedDateTime.now(ZoneId.of("Z")),
                 HttpStatus.UNAUTHORIZED.value());

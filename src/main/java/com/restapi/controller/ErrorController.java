@@ -27,7 +27,6 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
                 throw new ApiInternalServerErrorException("Internal server error");
             } else if (statusCode == HttpStatus.BAD_REQUEST.value()) {
                 throw new ApiBadRequestException("Bad Request");
-//                System.out.println("no ewidewtnie");
             }
         }
     }

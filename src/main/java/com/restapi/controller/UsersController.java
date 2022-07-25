@@ -20,7 +20,6 @@ public class UsersController {
 
     @GetMapping("/users/{username}")
     public GitHubProfile githubProfile(@PathVariable String username, @RequestHeader("Auth") String authToken) throws IOException {
-        System.out.println(authToken);
         return usersService.getUser(username, authToken);
     }
 

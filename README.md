@@ -10,7 +10,10 @@ Simple REST API that returns user and repositories data.
 
 
 ## General Info
-This is my project where I learn about Rest Api and Spring Boot in Java.
+I created this project to learn how to build Rest API with spring boot.
+Overall it is proxy API which shows on one endpoint data which original GitHub API shows on couple endpoints.
+Also, it makes a recap of user languages and languages per repository.
+
 
 ## Technologies Used
 * Spring
@@ -21,9 +24,7 @@ This is my project where I learn about Rest Api and Spring Boot in Java.
 ## Authorization
 GitHub limits connections to API for one user to 60 per hour. It can be
 increased by using personal token, so in my project you can use it. [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) 
-is instruction how to generate token. If you are running project from source code in IDE
-you can paste your token in application.properties file or if you are running file from
-jar then paste it in /config/application.properties. 
+is instruction how to generate token. After generating just add header `Auth` with the token.
 
 ## Setup
 *This app requires Java 17*
@@ -44,10 +45,17 @@ There is two endpoints to get data, one for user and one for repositories info.
 
 
 ### User 
-path: `localhost:8080/users/{username}`
-\
-\
+GET: `localhost:8080/users/{username}`\
+Header: `Auth: personalToken`\
+Return:
+* Bio
+* Login
+* Name
+* Number of bytes per language
+
 Here is sample output:
+\
+`curl -H "Auth: personalToken" localhost:8080/users/bladeours`
 ```
 {
   "bio": "IT student and DevOps engineer.",
@@ -61,10 +69,14 @@ Here is sample output:
 ```
 
 ### Repositories
-path: `localhost:8080/user-repositories/{username}`
-\
-\
-Here is sample output:
+GET: `localhost:8080/user-repositories/{username}`\
+Header: `Auth: personalToken`\
+Return:
+* list of repositories
+* languages per repository
+
+Here is sample output:\
+`curl -H "Auth: personalToken" localhost:8080/user-repositories/bladeours`
 ```
 [
   {
